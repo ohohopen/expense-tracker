@@ -1,0 +1,37 @@
+<div class="row mt-5 new">
+  <div class="col-xs-12 col-md-4 offset-md-4">
+    <h1 class="h3 text-center mb-4">請輸入你的支出</h1>   
+    <div class="input-group mb-3">
+      <span style="width: 120px;font-size:13px">*必填欄位</span>
+    </div>
+    <form action="/records/new" method="post">
+      <div class="input-group mb-3">
+        <label for="name">名稱：</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div class="input-group mb-3">
+        <label for="name">日期：</label>
+        <input type="date" name="date" id="name">
+      </div>
+      <div class="input-group mb-3">
+        <label for="name">類別：</label>
+        <select class="form-select category-select" id="inputGroupSelect01" name="category">
+          <option disabled>請選擇</option>
+          <option value="1">家居物業</option>
+          <option value="2">交通出行</option>
+          <option value="3">休閒娛樂</option>
+          <option value="3">餐飲食品</option>
+          <option value="3">其他</option>
+        </select>
+      </div>
+      <div class="input-group mb-5">
+        <label for="name">金額：</label>
+        <input type="number" name="amount" id="name" value="0">
+      </div>
+      <div class="input-group mb-3">
+        <button type="submit" class="btn btn-add">確定新增</button>
+      </div>
+    </form>
+
+  </div>
+</div>

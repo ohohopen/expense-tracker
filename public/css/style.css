@@ -1,3 +1,189 @@
-h1{
-  color:#f00;
+input,
+select {
+  outline: none;
+  -webkit-box-shadow: initial;
+  box-shadow: initial;
+}
+
+input:focus,
+.form-select:focus {
+  -webkit-box-shadow: initial;
+  box-shadow: initial;
+}
+
+h1 {
+  letter-spacing: 1px;
+}
+
+h1 span {
+  letter-spacing: 0;
+}
+
+h1 span .fas {
+  font-size: 50px;
+  color: #ff9e9e;
+}
+
+#inputGroupSelect01 {
+  width: 100%;
+  border-color: #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.totalAmount {
+  font-size: 45px;
+  line-height: 16px;
+  margin-bottom: 30px;
+  text-align: right;
+  color: #8fd1df;
+  font-family: "Dancing Script", cursive;
+}
+
+.list {
+  width: 100%;
+  padding: 0;
+}
+
+.list li {
+  border-bottom: 1px dashed #ccc;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: wrap row;
+  flex-flow: wrap row;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 15px 0 15px;
+}
+
+.list li section {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(100% - 133px);
+  flex: 0 0 calc(100% - 133px);
+  margin-right: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.list li section .icon {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 45px;
+  flex: 0 0 45px;
+  font-size: 33px;
+  color: #ffc6c6;
+}
+
+.list li section .todo {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(100% - 45px - 60px);
+  flex: 0 0 calc(100% - 45px - 60px);
+  margin-top: 7px;
+}
+
+.list li section .todo .what {
+  display: block;
+  font-size: 18px;
+}
+
+.list li section .todo .time {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  line-height: 10px;
+}
+
+.list li section .amount {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 60px;
+  flex: 0 0 60px;
+  margin-top: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  font-size: 20px;
+  font-family: "Dancing Script", cursive;
+}
+
+.list li .btns {
+  margin-top: 7px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 122px;
+  flex: 0 0 122px;
+}
+
+.btn-add {
+  background-color: #5cbbcf;
+  border: 4px solid #b3e9f4;
+  color: #fff;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+.btn-add:hover {
+  background-color: #b3e9f4;
+}
+
+.btn-light2 {
+  background-color: #5cbbcf;
+  color: #fff;
+  width: 100%;
+}
+
+.btn-light2:hover {
+  background-color: #b3e9f4;
+}
+
+.btn-fb {
+  background-color: #4677c0;
+  color: #fff;
+}
+
+.btn-fb:hover {
+  background-color: #d6e8ff;
+}
+
+@media all and (min-width: 980px) {
+  .new .col-xs-12 {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+.new .input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.new .input-group label {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 80px;
+  flex: 0 0 80px;
+}
+
+.new .input-group input {
+  width: 100%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(100% - 80px);
+  flex: 0 0 calc(100% - 80px);
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.new .input-group select {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(100% - 80px);
+  flex: 0 0 calc(100% - 80px);
 }

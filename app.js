@@ -4,11 +4,10 @@ require("dotenv").config();
 const db = require("./config/mongoose");
 const port = process.env.PORT;
 const exphbs = require("express-handlebars");
+const router = require("./routes");
 app.use(express.static("public"));
 app.engine("hbs", exphbs({ defaultLayout: "main", extname: "hbs" }));
 app.set("view engine", "hbs");
-app.get("/", (req, res) => {
-  console.log("ok");
-  res.render("index");
-});
+app.use(router);
+
 app.listen(port, () => console.log("listening"));
