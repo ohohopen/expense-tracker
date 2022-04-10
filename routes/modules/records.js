@@ -24,5 +24,35 @@ router.post("/new", (req, res) => {
 		}).then(() => res.redirect("/"));
 	});
 });
+// 查-以類別篩選資料
+router.post("/filter", (req, res) => {
+	//首頁下拉類別傳入的select option value
+	const optionValue = req.body.select;
+	// 找出符合傳入類別的所有資料, 再以和讀取全部資料的相同作法再作一次
+	Record.find({ category: optionValue })
+		.lean()
+		.then((records) => {
+			let totalAmount = 0;
+			let iconObj = {};
+			for (let i = 0; i < records.length; i++) {
+				totalAmount += records[i].amount;
+			}
+			records.forEach((item, i) => {
+				if (item.category == 1) {
+					iconObj.icon = CATEGORY.家居物業;
+				} else if (item.category == 2) {
+					iconObj.icon = CATEGORY.交通出行;
+				} else if (item.category == 3) {
+					iconObj.icon = CATEGORY.休閒娛樂;
+				} else if (item.category == 4) {
+					iconObj.icon = CATEGORY.餐飲食品;
+				} else {
+					iconObj.icon = CATEGORY.其他;
+				}
+				Object.assign(item, iconObj);
+			});
+			res.render("index", { records, totalAmount });
+		});
+});
 
 module.exports = router;
