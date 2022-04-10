@@ -21,7 +21,10 @@
     <nav class="navbar navbar-dark" style="background-color:#6fc7da">
       <div class="container-fluid">
         <a class="navbar-brand" href='/'>記帳本</a>
-        <a href="/users/login" class="d-flex btn btn-light">登入</a>
+        <div style="display: flex;">
+          <a href="/users/login" class="d-flex btn btn-light" style="margin-right: 10px;">登入</a>
+          <a href="/users/logout" class="d-flex btn btn-light">登出</a>
+        </div>
       </div>
     </nav>
     {{{body}}}
