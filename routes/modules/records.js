@@ -83,5 +83,11 @@ router.post("/:id/edit", (req, res) => {
 			.then(() => res.redirect("/"));
 	});
 });
-
+// 刪
+router.post("/delete/:id", (req, res) => {
+	const id = req.params.id;
+	Record.findById(id)
+		.then((records) => records.remove())
+		.then(() => res.redirect("/"));
+});
 module.exports = router;
