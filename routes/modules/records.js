@@ -65,7 +65,7 @@ router.get("/:id/edit", (req, res) => {
 			res.render("edit", { records, newDate });
 		});
 });
-router.post("/:id/edit", (req, res) => {
+router.put("/:id", (req, res) => {
 	const id = req.params.id;
 	const { name, date, amount, category } = req.body;
 	// 先找出Category裡屬於表單傳入category編號的資料(只是需要它的ObjectId)
@@ -84,7 +84,7 @@ router.post("/:id/edit", (req, res) => {
 	});
 });
 // 刪
-router.post("/delete/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
 	const id = req.params.id;
 	Record.findById(id)
 		.then((records) => records.remove())
