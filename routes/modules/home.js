@@ -3,11 +3,13 @@ const router = express.Router();
 const Record = require("../../models/records");
 const { CATEGORY } = require("../../public/data/seederData.js");
 router.get("/", (req, res) => {
-	console.log("ok");
-	Record.find()
+	// console.log("cc", req.user._id);
+	const userId = req.user._id;
+	Record.find({ userId })
 		.lean()
 		.sort({ _id: "desc" })
 		.then((records) => {
+			console.log(records);
 			let totalAmount = 0;
 			let iconObj = {};
 			// 把Record資料庫每一筆的amount加總

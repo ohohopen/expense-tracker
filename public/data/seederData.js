@@ -113,5 +113,9 @@ const SEED_RECORD = [
 		categoryId: "",
 	},
 ];
-
-module.exports = { SEED_CATEGORY, SEED_RECORD, CATEGORY };
+const SEED_USER = {
+	name: "老爸",
+	email: "user1@example.com",
+	password: "12345678",
+};
+module.exports = { SEED_CATEGORY, SEED_RECORD, CATEGORY, SEED_USER };

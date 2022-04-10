@@ -22,8 +22,11 @@
       <div class="container-fluid">
         <a class="navbar-brand" href='/'>記帳本</a>
         <div style="display: flex;">
-          <a href="/users/login" class="d-flex btn btn-light" style="margin-right: 10px;">登入</a>
+          {{#if isAuthenticated}}
           <a href="/users/logout" class="d-flex btn btn-light">登出</a>
+          {{else}}
+            <a href="/users/login" class="d-flex btn btn-light" style="margin-right: 10px;">登入</a>
+          {{/if}}
         </div>
       </div>
     </nav>

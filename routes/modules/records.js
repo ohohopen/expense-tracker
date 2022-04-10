@@ -13,6 +13,7 @@ router.post("/new", (req, res) => {
 	const newDate = date.replace(/-/g, "/");
 	// 在Category資料裡找出符合表單傳入的category value的該筆
 	// 將該筆的categories._id存入Record的categoryId
+	const userId = req.user._id;
 	Category.findOne({ id: category }).then((categories) => {
 		// console.log("categories=", categories);
 		Record.create({
@@ -20,6 +21,7 @@ router.post("/new", (req, res) => {
 			date: newDate,
 			amount,
 			category,
+			userId,
 			categoryId: categories._id,
 		}).then(() => res.redirect("/"));
 	});
@@ -29,7 +31,8 @@ router.post("/filter", (req, res) => {
 	//首頁下拉類別傳入的select option value
 	const optionValue = req.body.select;
 	// 找出符合傳入類別的所有資料, 再以和讀取全部資料的相同作法再作一次
-	Record.find({ category: optionValue })
+	const userId = req.user._id;
+	Record.find({ userId, category: optionValue })
 		.lean()
 		.then((records) => {
 			let totalAmount = 0;
@@ -67,10 +70,11 @@ router.get("/:id/edit", (req, res) => {
 });
 router.put("/:id", (req, res) => {
 	const id = req.params.id;
+	const userId = req.user._id;
 	const { name, date, amount, category } = req.body;
-	// 先找出Category裡屬於表單傳入category編號的資料(只是需要它的ObjectId)
+	// 先找出Category裡屬於表單傳入category編號的資料(只是需要它的ObjectId)(這裡的id是Category另外設的, 非系統生成的_id)
 	// 找出該筆Record, 將Category的ObjectId寫入Record的categoryId欄位
-	Category.findOne({ id: category }).then((categories) => {
+	Category.findOne({ id: category, userId }).then((categories) => {
 		Record.findById(id)
 			.then((records) => {
 				records.name = name;
@@ -85,8 +89,12 @@ router.put("/:id", (req, res) => {
 });
 // 刪
 router.delete("/:id", (req, res) => {
-	const id = req.params.id;
-	Record.findById(id)
+	const _id = req.params.id;
+	const userId = req.user._id;
+	console.log("_id=", _id);
+	console.log("userId=", userId);
+	// Record.findOne({ _id, userId }).then((records) => console.log(records));
+	Record.findOne({ _id, userId })
 		.then((records) => records.remove())
 		.then(() => res.redirect("/"));
 });
