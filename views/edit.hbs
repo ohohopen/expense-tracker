@@ -4,28 +4,28 @@
     <div class="input-group mb-3">
       <span style="width: 120px;font-size:13px">*必填欄位</span>
     </div>
-    <form action="/records/" method="post">
+    <form action="/records/{{records._id}}?_method=PUT" method="post">
       <div class="input-group mb-3">
         <label for="name">名稱*：</label>
-        <input type="text" name="name" value="">
+        <input type="text" name="name" value="{{records.name}}">
       </div>
       <div class="input-group mb-3">
         <label for="">日期*：</label>
-        <input type="date" value="" name="date">
+        <input type="date" value="{{newDate}}" name="date">
       </div>
       <div class="input-group mb-3">
         <label for="category">類別*：</label>
         <select class="form-select category-select" id="inputGroupSelect01" name="category">
-          <option value="1">家居物業</option>
-          <option value="2">交通出行</option>
-          <option value="3">休閒娛樂</option>
-          <option value="4">餐飲食品</option>
-          <option value="5">其他</option>
+          <option class="option" value="1">家居物業</option>
+          <option class="option" value="2">交通出行</option>
+          <option class="option" value="3">休閒娛樂</option>
+          <option class="option" value="4">餐飲食品</option>
+          <option class="option" value="5">其他</option>
         </select>
       </div>
       <div class="input-group mb-5">
         <label for="name">金額*：</label>
-        <input type="number" name="amount" value="">
+        <input type="number" name="amount" value="{{records.amount}}">
       </div>
       <div class="input-group mb-3">
         <button type="submit" class="btn btn-add">確定修改</a>
@@ -35,5 +35,14 @@
   </div>
 </div>
 <script>
+ const option=document.querySelectorAll('.option')
+ const newOption=[...option]
+ console.log(newOption)
+ newOption.find(item=>{
+   if(item.value=={{records.category}}){
+     item.selected=true
+   }
+ })
+ 
 
 </script>
