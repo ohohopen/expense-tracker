@@ -54,5 +54,34 @@ router.post("/filter", (req, res) => {
 			res.render("index", { records, totalAmount });
 		});
 });
+// 改
+router.get("/:id/edit", (req, res) => {
+	const id = req.params.id;
+	Record.findById(id)
+		.lean()
+		.then((records) => {
+			// 系統日期預設是yyyy-mm-dd, 所以先把/改為-
+			const newDate = records.date.replace(/\//g, "-");
+			res.render("edit", { records, newDate });
+		});
+});
+router.post("/:id/edit", (req, res) => {
+	const id = req.params.id;
+	const { name, date, amount, category } = req.body;
+	// 先找出Category裡屬於表單傳入category編號的資料(只是需要它的ObjectId)
+	// 找出該筆Record, 將Category的ObjectId寫入Record的categoryId欄位
+	Category.findOne({ id: category }).then((categories) => {
+		Record.findById(id)
+			.then((records) => {
+				records.name = name;
+				records.date = date;
+				records.amount = amount;
+				records.category = category;
+				records.categoryId = categories._id;
+				records.save();
+			})
+			.then(() => res.redirect("/"));
+	});
+});
 
 module.exports = router;
