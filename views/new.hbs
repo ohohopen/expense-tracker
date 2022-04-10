@@ -11,7 +11,7 @@
       </div>
       <div class="input-group mb-3">
         <label for="name">日期：</label>
-        <input type="date" name="date" id="name">
+        <input type="date" name="date" id="date">
       </div>
       <div class="input-group mb-3">
         <label for="name">類別：</label>
@@ -26,7 +26,7 @@
       </div>
       <div class="input-group mb-5">
         <label for="name">金額：</label>
-        <input type="number" name="amount" id="name" value="0">
+        <input type="number" name="amount" id="amount" value="0">
       </div>
       <div class="input-group mb-3">
         <button type="submit" class="btn btn-add">確定新增</button>
@@ -35,3 +35,11 @@
 
   </div>
 </div>
+<script>
+  (function getDate(){
+    var today = new Date();
+    document.getElementById("date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+    console.log('xx')
+  })()
+
+</script>
