@@ -18,12 +18,13 @@ module.exports = (app) => {
 							console.log("無此帳號");
 							return done(null, false, req.flash("warning_msg", "無此使用者"));
 						}
-						if (user.password !== password) {
-							console.log("密碼錯誤");
-							return done(null, false, req.flash("warning_msg", "密碼錯誤"));
-						}
-						console.log("登入成功");
-						return done(null, user, { message: "登入成功" });
+						return bcrypt.compare(password, user.password).then((isMatch) => {
+							if (!isMatch) {
+								console.log("密碼錯誤");
+								return done(null, false, req.flash("warning_msg", "密碼錯誤"));
+							}
+							return done(null, user);
+						});
 					})
 					.catch((err) => done(err, null));
 			}

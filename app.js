@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const db = require("./config/mongoose");
 const exphbs = require("express-handlebars");
 const router = require("./routes");
 const methodOveride = require("method-override");
@@ -11,6 +10,7 @@ if (process.env.NODE_ENV !== "production") {
 	require("dotenv").config();
 }
 const port = process.env.PORT;
+require("./config/mongoose");
 app.use(methodOveride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
