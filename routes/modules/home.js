@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 		.lean()
 		.sort({ _id: "desc" })
 		.then((records) => {
-			console.log(records);
+			// console.log(records);
 			let totalAmount = 0;
 			let iconObj = {};
 			// 把Record資料庫每一筆的amount加總

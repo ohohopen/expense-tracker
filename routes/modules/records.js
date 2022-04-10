@@ -91,8 +91,8 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
 	const _id = req.params.id;
 	const userId = req.user._id;
-	console.log("_id=", _id);
-	console.log("userId=", userId);
+	// console.log("_id=", _id);
+	// console.log("userId=", userId);
 	// Record.findOne({ _id, userId }).then((records) => console.log(records));
 	Record.findOne({ _id, userId })
 		.then((records) => records.remove())

@@ -44,7 +44,7 @@ const SEED_RECORD = [
 	},
 	{
 		name: "餅乾",
-		date: "2022/02/",
+		date: "2022/02/16",
 		amount: 520,
 		category: 4,
 		categoryId: "",
