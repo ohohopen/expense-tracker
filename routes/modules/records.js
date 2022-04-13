@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Record = require("../../models/records");
 const Category = require("../../models/category");
-const { CATEGORY } = require("../../public/data/seederData.js");
+const { SEED_CATEGORY } = require("../../public/data/seederData.js");
 // 增
 router.get("/new", (req, res) => {
 	res.render("new");
@@ -15,7 +15,7 @@ router.post("/new", (req, res) => {
 	// 將該筆的categories._id存入Record的categoryId
 	const userId = req.user._id;
 	Category.findOne({ id: category }).then((categories) => {
-		// console.log("categories=", categories);
+		console.log("categories=", categories);
 		Record.create({
 			name,
 			date: newDate,
@@ -43,17 +43,23 @@ router.post("/filter", (req, res) => {
 				totalAmount += records[i].amount;
 			}
 			records.forEach((item, i) => {
-				if (item.category == 1) {
-					iconObj.icon = CATEGORY.家居物業;
-				} else if (item.category == 2) {
-					iconObj.icon = CATEGORY.交通出行;
-				} else if (item.category == 3) {
-					iconObj.icon = CATEGORY.休閒娛樂;
-				} else if (item.category == 4) {
-					iconObj.icon = CATEGORY.餐飲食品;
-				} else {
-					iconObj.icon = CATEGORY.其他;
+				const category_len = SEED_CATEGORY.length;
+				for (let i = 0; i < category_len; i++) {
+					if (item.category == i + 1) {
+						iconObj.icon = SEED_CATEGORY[i].icon;
+					}
 				}
+				// if (item.category == 1) {
+				// 	iconObj.icon = CATEGORY.家居物業;
+				// } else if (item.category == 2) {
+				// 	iconObj.icon = CATEGORY.交通出行;
+				// } else if (item.category == 3) {
+				// 	iconObj.icon = CATEGORY.休閒娛樂;
+				// } else if (item.category == 4) {
+				// 	iconObj.icon = CATEGORY.餐飲食品;
+				// } else {
+				// 	iconObj.icon = CATEGORY.其他;
+				// }
 				Object.assign(item, iconObj);
 			});
 			res.render("index", { records, totalAmount });

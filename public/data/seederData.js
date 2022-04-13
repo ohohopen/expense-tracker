@@ -1,30 +1,29 @@
-const CATEGORY = {
-	家居物業: "<i class='fas fa-home'></i>",
-	交通出行: "<i class='fas fa-shuttle-van'></i>",
-	休閒娛樂: "<i class='fas fa-grin-beam'></i>",
-	餐飲食品: "<i class='fas fa-utensils'></i>",
-	其他: "<i class='fas fa-pen'></i>",
-};
+//const CATEGORY = [{}, {}, {}, {}, {}];
 const SEED_CATEGORY = [
 	{
 		id: 1,
 		name: "家居物業",
+		icon: "<i class='fas fa-home'></i>",
 	},
 	{
 		id: 2,
 		name: "交通出行",
+		icon: "<i class='fas fa-shuttle-van'></i>",
 	},
 	{
 		id: 3,
 		name: "休閒娛樂",
+		icon: "<i class='fas fa-grin-beam'></i>",
 	},
 	{
 		id: 4,
 		name: "餐飲食品",
+		icon: "<i class='fas fa-utensils'></i>",
 	},
 	{
 		id: 5,
 		name: "其他",
+		icon: "<i class='fas fa-pen'></i>",
 	},
 ];
 const SEED_RECORD = [
@@ -118,4 +117,4 @@ const SEED_USER = {
 	email: "user1@example.com",
 	password: "12345678",
 };
-module.exports = { SEED_CATEGORY, SEED_RECORD, CATEGORY, SEED_USER };
+module.exports = { SEED_CATEGORY, SEED_RECORD, SEED_USER };
