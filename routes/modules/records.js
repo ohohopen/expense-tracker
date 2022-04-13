@@ -23,7 +23,9 @@ router.post("/new", (req, res) => {
 			category,
 			userId,
 			categoryId: categories._id,
-		}).then(() => res.redirect("/"));
+		})
+			.then(() => res.redirect("/"))
+			.catch((err) => console.log(err));
 	});
 });
 // 查-以類別篩選資料
