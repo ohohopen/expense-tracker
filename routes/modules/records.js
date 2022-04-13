@@ -22,7 +22,7 @@ router.post("/new", (req, res) => {
 			amount,
 			category,
 			userId,
-			categoryId: "xxx",
+			categoryId: categories._id,
 		})
 			.then(() => res.redirect("/"))
 			.catch((err) => console.log(err));
