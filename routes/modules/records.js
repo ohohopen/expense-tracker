@@ -15,7 +15,19 @@ router.post("/new", (req, res) => {
 	// 將該筆的categories._id存入Record的categoryId
 	const userId = req.user._id;
 	Category.findOne({ id: category }).then((categories) => {
-		console.log("categories=", categories);
+		// console.log("categories=", categories);
+		if (!categories) {
+			return Record.create({
+				name,
+				date: newDate,
+				amount,
+				category,
+				userId,
+				categoryId: null,
+			})
+				.then(() => res.redirect("/"))
+				.catch((err) => console.log(err));
+		}
 		Record.create({
 			name,
 			date: newDate,

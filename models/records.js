@@ -27,7 +27,7 @@ const recordSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "Category",
 		index: true,
-		required: true,
+		required: false,
 	},
 });
 module.exports = mongoose.model("Record", recordSchema);
