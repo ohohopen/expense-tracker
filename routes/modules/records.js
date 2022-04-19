@@ -95,6 +95,20 @@ router.put("/:id", (req, res) => {
 	// 先找出Category裡屬於表單傳入category編號的資料(只是需要它的ObjectId)(這裡的id是Category另外設的, 非系統生成的_id)
 	// 找出該筆Record, 將Category的ObjectId寫入Record的categoryId欄位
 	Category.findOne({ id: category, userId }).then((categories) => {
+		if (!categories) {
+			return Record.findById(id)
+				.then((records) => {
+					records.name = name;
+					records.date = date;
+					records.amount = amount;
+					records.category = category;
+					records.categoryId = null;
+					records.save();
+				})
+				.then(() => res.redirect("/"))
+				.catch((err) => console.log(err));
+		}
+
 		Record.findById(id)
 			.then((records) => {
 				records.name = name;
