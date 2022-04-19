@@ -21,8 +21,9 @@ router.get("/", (req, res) => {
 			records.forEach((item, i) => {
 				// console.log(iconObj);
 				const category_len = SEED_CATEGORY.length;
+				// console.log("item.category=", typeof item.category);
 				for (let i = 0; i < category_len; i++) {
-					if (item.category == i + 1) {
+					if (item.category === i + 1) {
 						iconObj.icon = SEED_CATEGORY[i].icon;
 					}
 				}
